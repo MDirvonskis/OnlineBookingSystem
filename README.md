@@ -4,3 +4,6 @@
 npm init -y
 npm i express
 npm i --save-dev nodemon
+
+# Start server.js
+npm run devStart
