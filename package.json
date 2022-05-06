@@ -1,0 +1,26 @@
+{
+  "name": "onlinebookingsystem",
+  "version": "1.0.0",
+  "description": "# Installation Guide: npm init -y npm i express npm i --save-dev nodemon",
+  "main": "index.js",
+  "scripts": {
+    "devStart" : "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MDirvonskis/OnlineBookingSystem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MDirvonskis/OnlineBookingSystem/issues"
+  },
+  "homepage": "https://github.com/MDirvonskis/OnlineBookingSystem#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
