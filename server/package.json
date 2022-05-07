@@ -4,7 +4,8 @@
   "description": "# Installation Guide: npm init -y npm i express npm i --save-dev nodemon",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "client": "npm start"
   },
   "repository": {
     "type": "git",
