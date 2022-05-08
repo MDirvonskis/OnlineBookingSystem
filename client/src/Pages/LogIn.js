@@ -10,7 +10,7 @@ function LogIn() {
   const [user, setUser] = useState({userName: "", password: ""})
   const [error, setError] = useState("")
 
-  const LogIn = details =>
+  const LogIn = details =>//check if user match in database
   {
     if(details.userName === adminUser.userName && details.password === adminUser.password) {
       console.log("Logged In")
