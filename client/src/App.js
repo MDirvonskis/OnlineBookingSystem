@@ -1,27 +1,32 @@
 import React, {useEffect, useState } from 'react'
+import LogInForms from './componets/LogInForm'
 
 function App() {
-  const [backendData, setBackData] = useState([{}])
-  useEffect(() => {
-    fetch("/users/0").then(
-      Response => Response.json()
-    ).then(
-      data => {
-        setBackData(data)
-      }
-    )
-  }, [])
-  
+  const adminUser = {
+    userName: "admin",
+    password: "admin123"
+  }
+
+  const [user, setUser] = userState({userName: "", email: ""})
+  const [error, setError] = useState = useState("")
+
+  const LogIn = details =>{
+    console.log(details)
+  }
+  const LogOut = () =>{
+    console.log("LogOut")
+  }
   return (
-    <div>
-      {(typeof backendData.users === 'undefined' ) ? (
-        <p>Loading...</p>
-      ): (
-        backendData.users.map((user, i) => (
-          <p key={i}>{user}</p>
-        ))
+    <div className="App">
+      {(user.userName != "") ? (
+        <div className ="Welcome">
+        <h2>Welcome, <span>{user.name}</span></h2>
+        <button>LogOut</button>
+        </div>
+      ) : (
+        <LogInForm LogIn={LogIn} error={error} />//Initiate log form
       )}
-    </div>
+    </div>    
   )
 }
 
