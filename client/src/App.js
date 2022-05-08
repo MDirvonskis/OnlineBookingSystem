@@ -12,26 +12,24 @@ function App() {
 
   const LogIn = details =>
   {
-    //console.log(details.userName)
-    //console.log(details.password)
-    //console.log(adminUser.userName)
-    //console.log(adminUser.password)
     if(details.userName === adminUser.userName && details.password === adminUser.password) {
       console.log("Logged In")
+      setUser({userName: details.userName})
     }
     else{
-      console.log("Details do not match")
+      setError("Details do not match")
     }
   }
   const LogOut = () =>{
+    setUser({userName: "", password: ""})
     console.log("LogOut")
   }
   return (
     <div className="App">
       {(user.userName !== "") ? (
         <div className ="Welcome">
-        <h2>Welcome, <span>{user.name}</span></h2>
-        <button>LogOut</button>
+        <h2>Welcome <span>{user.userName}</span></h2>
+        <button onClick ={LogOut}>LogOut</button>
         </div>
       ) : (
         <LogInForm LogIn={LogIn} error={error} />//Initiate login form
