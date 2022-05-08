@@ -1,40 +1,18 @@
-import React, {useEffect, useState } from 'react'
-import LogInForm from './components/LogInForm'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from 'react'
+import Home from "./Pages/Home"
+import LogIn from "./Pages/LogIn"
+import SighUp from "./Pages/SighUp"
+import errorPg from "./Pages/errorPg"
+
 
 function App() {
-  const adminUser = {
-    userName: "admin",
-    password: "admin123"
-  }
-
-  const [user, setUser] = useState({userName: "", password: ""})
-  const [error, setError] = useState("")
-
-  const LogIn = details =>
-  {
-    if(details.userName === adminUser.userName && details.password === adminUser.password) {
-      console.log("Logged In")
-      setUser({userName: details.userName})
-    }
-    else{
-      setError("Details do not match")
-    }
-  }
-  const LogOut = () =>{
-    setUser({userName: "", password: ""})
-    console.log("LogOut")
-  }
   return (
-    <div className="App">
-      {(user.userName !== "") ? (
-        <div className ="Welcome">
-        <h2>Welcome <span>{user.userName}</span></h2>
-        <button onClick ={LogOut}>LogOut</button>
-        </div>
-      ) : (
-        <LogInForm LogIn={LogIn} error={error} />//Initiate login form
-      )}
-    </div>    
+    <Router>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+        </Routes>
+    </Router>
   )
 }
 

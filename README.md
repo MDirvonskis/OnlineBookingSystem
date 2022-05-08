@@ -1,14 +1,19 @@
 # OnlineBookingSystem
 
 # Installation Guide:
+express:
 npm init -y
 npm i express
 npm i --save-dev nodemon
 
-npx create-react-app .
+react:
+npm install -g create-react-app
+npx create-react-app
+npm install react-router
 npm i -S react-scripts
 
-npm install ejs
+//npm i -D react-router-dom
+//npm install ejs
 
 # Start Server
 npm run devStart
