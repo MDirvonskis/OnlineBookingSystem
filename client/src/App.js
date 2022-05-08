@@ -1,5 +1,5 @@
 import React, {useEffect, useState } from 'react'
-import LogInForm from './componets/LogInForm'
+import LogInForm from './components/LogInForm'
 
 function App() {
   const adminUser = {
