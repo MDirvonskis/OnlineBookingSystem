@@ -3,16 +3,16 @@ import React, {useState } from 'react'
 function SignUpForm(SignUp, error) {
     const [details, setDetails] = useState({usernName: "", firstName: "", lastName: "", telephone: "", email: "", password: ""})
 
-  const submitHandler = e => {
+    const submitHandler = e => {
     e.preventDefault()
     SignUp(details)
   }
     
   return (
-    <form>
+    <form onSubmit={submitHandler}>
         <div className="form-inner">
             <h2>SignUp</h2>
-            {(error != "") ? (<div className="error">{error}</div>) : ""}
+            {(error !== "") ? (<div className="error">{error}</div>) : ""}
             <div className="form-group">
                 <label htmlFor="userName"> UserName:</label>
                 <input type="text" name="userName" id="userName" onChange={e => setDetails({...details, userName: e.target.value})} value={details.userName}/>

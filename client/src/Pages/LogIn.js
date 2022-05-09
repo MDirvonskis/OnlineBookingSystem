@@ -25,7 +25,7 @@ function LogIn() {
     console.log("LogOut")
   }
   return (
-    <div className="App">
+    <div className="LogIn">
       {(user.userName !== "") ? (
         <div className ="Welcome">
         <h2>Welcome <span>{user.userName}</span></h2>

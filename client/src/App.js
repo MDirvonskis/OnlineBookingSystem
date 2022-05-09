@@ -16,6 +16,7 @@ function App() {
           <Route path="/AdminPanel" element={<LogIn />}/>
           <Route path="/ClientBooking" element={<LogIn />}/>
           <Route path="/AdminPanel/DatabaseManagement" element={<LogIn />}/>
+          <Route path="*" element={<errorPg />}/>
         </Routes>
     </Router>
   )
