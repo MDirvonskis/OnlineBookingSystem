@@ -1,9 +1,9 @@
 import React from 'react'
 
-function errorPg() {
+function ErrorPg() {
   return (
     <div>errorPg</div>
   )
 }
 
-export default errorPg
+export default ErrorPg

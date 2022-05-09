@@ -3,7 +3,7 @@ import React from 'react'
 import Home from "./Pages/Home"
 import LogIn from "./Pages/LogIn"
 import SighUp from "./Pages/SignUp"
-import errorPg from "./Pages/errorPg"
+//import errorPg from "./Pages/ErrorPg"
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
           <Route path="/AdminPanel" element={<LogIn />}/>
           <Route path="/ClientBooking" element={<LogIn />}/>
           <Route path="/AdminPanel/DatabaseManagement" element={<LogIn />}/>
-          <Route path="*" element={<errorPg />}/>
+          
         </Routes>
     </Router>
   )
 }
-
+//<Route path="*" element={<ErrorPg />}/>
 export default App
