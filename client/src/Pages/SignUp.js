@@ -2,9 +2,9 @@ import React,{useEffect, useState } from 'react'
 //import SignUpForm from '../components/SignUpForm'
 
 function SignUp() {
-  var boolUser = false, data = ({userName: "", email: ""})
+  var boolUser = false, data = ({userName: "", email: ""})//Fetch all user
 
-  const [details, setUser] = useState({userName: "", firstName: "", lastName: "", telephone: "", email: "", password: ""})
+  const [details, setUser] = useState({userName: "", firstName: "", lastName: "", telephone: "", email: "", password: ""})//Content signup form
   const [error, setError] = useState("");
 
   const submitHandler = e => {
@@ -14,9 +14,14 @@ function SignUp() {
 
   const SendUserData = details =>
   {
-    for (let i = 0; i < data.length; i++) {
-      if(data[i] === details.userName){
-        boolUser = false
+    //Need to send userName && email to database to check if contains user
+    for (let i = 0; i < data.length; i++) {//Iterates through user
+      if(data.userName[i] === details.userName || data[i].email === details.email){
+
+        console.log(data.userName+" "+details.userName)//Log in console to check  / delete later
+        console.log(data[i].email+" "+ details.emai)
+
+        boolUser = false//Identifies if username already matches 
         break//Exits out of the loop
       }
       else{
