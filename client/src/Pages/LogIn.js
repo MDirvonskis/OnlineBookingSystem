@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom"
 
 function LogIn() {
   let navigate = useNavigate()
-  const [details, setDetails] = useState({usernName: "", password: ""})
+  const [details, setDetails] = useState({usernName: "", password: ""})//We only need username and password to login
   const submitHandler = e => {
     e.preventDefault()
     LogInDetails(details)
@@ -18,17 +18,25 @@ function LogIn() {
 
   const LogInDetails = details =>//check if user match in database
   {
+    //We could request a sql command to find user
+    //details.userName && details.password
+    //send details to server to initiate SQL command.
     if(details.userName === adminUser.userName && details.password === adminUser.password) {
+      //Admin account recognised
       console.log("Logged In")
       //setUser({userName: details.userName})
       navigate("/AdminPanel")
+    }
+    else if(details.userName)
+    {
+
     }
     else{
       setError("Details do not match")
     }
   }
   const LogOut = () =>{
-    setUser({userName: "", password: ""})
+    setUser({userName: "", password: ""})//reset the state
     console.log("LogOut")
   }
   return (
