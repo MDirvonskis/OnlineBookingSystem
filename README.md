@@ -12,6 +12,9 @@ npx create-react-app
 npm install react-router
 npm i -S react-scripts
 
+mySQL Database:
+npm i mysql2
+
 //npm i -D react-router-dom
 //npm install ejs
 
