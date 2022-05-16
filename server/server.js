@@ -1,17 +1,49 @@
-const express = require('express')
-const app = express()
-const port = 5000
+const express = require('express');
+//const { post } = require('./routes/users');
+const app = express();
+const port = 5000;
 
-app.set("view engine", "ejs")//sets engine as ejs
+app.use(express.json);//Allows json to be processed
+app.use(express.urlencoded({extended: false}));//Middleware to access urlencoded request
 
-app.get("/", (req,res) => {
-    console.log("here")
-    res.render('index' ,{text: 'Word'})
-})
+const users = [
+    { userName: 'admin', password: 'admin'}
+];
 
-const userRouter = require('./routes/users')
+function findUser(req,res, next) {//SQL command that checks if user is in the system
+    const { userName, email} = req.body;//Deconstruct
+    //Need to do a search in the database
+    if(true){
+        res.status(200).send({msg : "User found"});
+        next();
+    }
+    else{
+        res.status(404).send({msg : "User not found"});
+    }
+
+}
+
+app.get("/LogIn", (req,res) => {
+    const { userName, password } = req.params;
+    const user = users.find((user) => user.userName === userName && user.password === password);
+    
+    if(user){
+        res.status(200).send(user);
+    }
+    else{
+        res.status(404).send("User not recognised");
+    }
+});
+app.post("/SignUp", (req, res) => {
+    const user = req.body;
+    users.push(user);
+    res.status(201);
+});
+
+
+//const userRouter = require('./routes/users')
 //const postRouter = require('./routes/posts')
-app.use("/users", userRouter)
+//app.use("/users", userRouter)
 //app.user("/post", postRouter)  
 
-app.listen(port, () => {console.log("Server started on port 5000")})
+app.listen(port, () => {console.log("Server started on port 5000")});
