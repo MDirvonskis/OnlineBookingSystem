@@ -1,17 +1,11 @@
 const express = require('express');
-//const db = require('database.js');
+const db = require('./database');
 //const { post } = require('./routes/users');
 const app = express();
-const port = 5000;
-
-
-
+const port = 3000;
 
 app.use(express.json);//Allows json to be processed
 app.use(express.urlencoded({extended: false}));//Middleware to access urlencoded request
-
-
-
 
 const users = [
     { userName: 'admin', password: 'admin'}
@@ -24,7 +18,9 @@ app.post('/', (req,res) => {
     }
 });
 
-
+app.get('/', (req,res) => {
+    res.status(200).send("Localhost reached")
+})
 
 function findUser(req,res, next) {//SQL command that checks if user is in the system
     const { userName, email} = req.body;//Deconstruct
@@ -40,7 +36,7 @@ function findUser(req,res, next) {//SQL command that checks if user is in the sy
 };
 
 app.get("/LogIn", (req,res) => {
-    const { userName, password } = req.params;
+    const { userName, password } = req.body;
     const user = users.find((user) => user.userName === userName && user.password === password);
     
     if(user){
@@ -62,4 +58,4 @@ app.post("/SignUp", (req, res) => {
 //app.use("/users", userRouter)
 //app.user("/post", postRouter)  
 
-app.listen(port, () => {console.log("Server started on port 5000")});
+app.listen(port, () => {console.log("Server started on port "+port)});
