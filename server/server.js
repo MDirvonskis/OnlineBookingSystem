@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('./database');
 //const { post } = require('./routes/users');
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.json);//Allows json to be processed
 app.use(express.urlencoded({extended: false}));//Middleware to access urlencoded request
@@ -10,18 +10,6 @@ app.use(express.urlencoded({extended: false}));//Middleware to access urlencoded
 const users = [
     { userName: 'admin', password: 'admin'}
 ];
-
-app.post('/', (req,res) => {
-    const { userName, password} = req.body;
-    if(userName && password){
-        console.log(userName);
-    }
-});
-
-app.get('/', (req,res) => {
-    res.status(200).send("Localhost reached")
-})
-
 function findUser(req,res, next) {//SQL command that checks if user is in the system
     const { userName, email} = req.body;//Deconstruct
     //Need to do a search in the database
@@ -34,6 +22,16 @@ function findUser(req,res, next) {//SQL command that checks if user is in the sy
     }
 
 };
+app.get('/', (req,res) => {
+    res.status(200).send("Localhost reached")
+})
+
+app.post('/', (req,res) => {
+    const { userName, password} = req.body;
+    if(userName && password){
+        console.log(userName);
+    }
+});
 
 app.get("/LogIn", (req,res) => {
     const { userName, password } = req.body;
