@@ -4,7 +4,6 @@
 express:
 npm init -y
 npm i express
-npm i --save-dev nodemon
 
 react:
 npm install -g create-react-app
