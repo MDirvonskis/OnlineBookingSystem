@@ -1,59 +1,65 @@
 const express = require('express');
+//const { createConnection } = require('mysql2');
+//const Connection = require('mysql2/typings/mysql/lib/Connection');
 const db = require('./database');
-//const { post } = require('./routes/users');
 const app = express();
 const port = 5000;
 
-app.use(express.json);//Allows json to be processed
+//app.use(express.json);//Allows json to be processed :currently breaks the program
 app.use(express.urlencoded({extended: false}));//Middleware to access urlencoded request
 
-const users = [
-    { userName: 'admin', password: 'admin'}
-];
-function findUser(req,res, next) {//SQL command that checks if user is in the system
-    const { userName, email} = req.body;//Deconstruct
-    //Need to do a search in the database
+function CheckUserDetails(name,email,password){
+    const user = {
+        userName: name,
+        userEmail: email,
+        userPassword: password
+    }
+    db.query(
+        'SELECT * FROM `customers`, `passwords` WHERE `customerID` = ? AND `email` = ? AND `password` = ?',
+        [user.userName, user.userEmail, user.userPassword],
+        function(err, results){
+            console.log(results);
+            console.log(err);
+        }
+    )
+}
+function AddUser(userName, forename, surname, email, password){
+    const user = {
+        userID: userName,
+        userForename: forename,
+        userSurname: surname,
+        userEmail: email,
+        userPassword: password
+    }
+    db.query(
+        'INSERT INTO customers(customerID, forename, surname, email) VALUES ('?');':
+        [user.userID,user.userForename,user.userSurname,user.userEmail],
+        function(err,results){
+            console.log(results)
+        }
+    );
+    db.query(
+        'INSERT INTO passwords(password,customerID) VALUES ('?');':
+        [user.userPassword, user.userID],
+        function(err,results){
+            console.log(results)
+        }
+    );
+}
+
+
+
+
+app.get('/', (req, res) => {
+  res.send('The server is active').status(200)
+});
+app.post('/LogIn', (req,res) =>{
+    const {userName , email, password} = req.body;
     if(true){
-        res.status(200).send({msg : "User found"});
-        next();
-    }
-    else{
-        res.status(404).send({msg : "User not found"});
-    }
-
-};
-app.get('/', (req,res) => {
-    res.status(200).send("Localhost reached")
-})
-
-app.post('/', (req,res) => {
-    const { userName, password} = req.body;
-    if(userName && password){
-        console.log(userName);
+        res.send("User found").status(200);
     }
 });
 
-app.get("/LogIn", (req,res) => {
-    const { userName, password } = req.body;
-    const user = users.find((user) => user.userName === userName && user.password === password);
-    
-    if(user){
-        res.status(200).send(user);
-    }
-    else{
-        res.status(404).send("User not recognised");
-    }
-});
-app.post("/SignUp", (req, res) => {
-    const user = req.body;
-    users.push(user);
-    res.status(201);
-});
 
 
-//const userRouter = require('./routes/users')
-//const postRouter = require('./routes/posts')
-//app.use("/users", userRouter)
-//app.user("/post", postRouter)  
-
-app.listen(port, () => {console.log("Server started on port "+port)});
+app.listen(port, () => {console.log(`Server listening on port ${port}`)});
