@@ -1,24 +1,24 @@
 # OnlineBookingSystem
 
 # Installation Guide:
-express:
+Express: https://expressjs.com/
+```
 npm init -y
 npm i express
+```
 
-react:
-npm install -g create-react-app
-npx create-react-app
-npm install react-router
-npm i -S react-scripts
-
-mySQL Database:
+Vue.js: https://vuejs.org/
+```
+npm install vue 
+npm install vue@csp
+```
+mySQL2: https://www.npmjs.com/package/mysql2
+```
 npm i mysql2
-
-//npm i -D react-router-dom
-//npm install ejs
+```
 
 # Start Server
-npm run devStart
-
-# Start Client
-npm run start
+```
+node server.js
+```
+Notes: To start the server, you need to be in /app route.
