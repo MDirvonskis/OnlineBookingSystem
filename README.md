@@ -6,6 +6,10 @@ Express: https://expressjs.com/
 npm init -y
 npm i express
 ```
+Cors
+```
+npm install cors
+```
 
 Vue.js: https://vuejs.org/
 ```
