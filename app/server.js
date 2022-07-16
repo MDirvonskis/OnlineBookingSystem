@@ -13,8 +13,8 @@ app.use(cors())//allows curl commands
 
 app.get("/", (req,res) => {
     console.log("here")
-    res.send("ho")
-    //res.sendFile(__dirname+'/client.html')
+    //res.send("ho")
+    res.sendFile(__dirname+'/client.html')
     //res.render('index' ,{text: 'Word'})
 })
 
