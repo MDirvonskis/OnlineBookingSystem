@@ -17,6 +17,35 @@ app.get("/", (req,res) => {
     res.sendFile(__dirname+'/client.html')
     //res.render('index' ,{text: 'Word'})
 })
+app.get('/getCustomer/:id', (req,res) => {
+    const id = req.params.id
+    db.query(
+      'SELECT * FROM customers WHERE CustomerID =  ?',
+      [id],
+      function(err,results,fields){
+        //console.log(results)
+        //console.log(fields)
+        //console.log(JSON.parse(results))
+        res.send(results)
+        //console.log(1)
+      }
+    )
+})
+
+app.post('/addCustomer', (req,res) =>{
+    console.log("here2")
+    var sql = `INSERT INTO customers(customerID,forename,surname,email)
+            VALUES (?, ?, ?, ?)`;
+    db.query[req.body.cutomerID, req.body.forename, req.body.surname, req.body.email],
+    function(err,results,fields){
+        //console.log(results)
+        //console.log(fields)
+        //console.log(JSON.parse(results))
+        res.send(results)
+        //console.log(1)
+    }
+})
+
 
 //const userRouter = require('./routes/users')
 //const postRouter = require('./routes/posts')

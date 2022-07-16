@@ -23,3 +23,10 @@ Install mySQL :https://www.npmjs.com/package/mysql2
 ```
 npm i mysql2
 ```
+
+# Curl commands for server
+Get customer by their customerID and return json list.
+```
+curl -v -X GET    http://localhost:5000/getCustomer/
+```
+
