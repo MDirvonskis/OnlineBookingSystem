@@ -29,4 +29,11 @@ Get customer by their customerID and return json list.
 ```
 curl -v -X GET    http://localhost:5000/getCustomer/
 ```
-
+Create customer in the database.
+```
+curl -v -X POST    http://localhost:5000/addCustomer -H "Content-Type: application/json" -d '{"customerID": "test", "forename": "test", "surname": "test", "email": "test@gmail.com"}'
+```
+Create a new customer with password.
+```
+curl -v -X POST    http://localhost:5000/addCustomer -H "Content-Type: application/json" -d '{"customerID": "test", "forename": "test", "surname": "test", "email": "test@gmail.com", "password": "test"}'
+```
