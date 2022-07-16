@@ -1,17 +1,25 @@
 # OnlineBookingSystem
 
+# Start server
+```
+node server.js
+```
+
 # Installation Guide:
-npm init -y
-npm i express
-npm i --save-dev nodemon
 
-npx create-react-app .
-npm i -S react-scripts
+Install Express.js :https://expressjs.com/
+```
+npm init
+npm install express
+```
 
-npm install ejs
+Install Vue.js :https://vuejs.org/
+```
+npm install vue 
+npm install vue@csp
+```
 
-# Start Server
-npm run devStart
-
-# Start Client
-npm run start
+Install mySQL :https://www.npmjs.com/package/mysql2
+```
+npm i mysql2
+```
