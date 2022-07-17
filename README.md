@@ -34,6 +34,14 @@ Get all customers from database.
 ```
 curl -v -X GET    http://localhost:5000/getALLCustomers
 ```
+Get all rooms from database.
+```
+curl -v -X GET    http://localhost:5000/getALLRooms
+```
+Get all bookings from database.
+```
+curl -v -X GET    http://localhost:5000/getALLBookings
+```
 
 ## POST commands
 Create customer in the database.

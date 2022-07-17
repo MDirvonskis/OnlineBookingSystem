@@ -40,6 +40,28 @@ app.get('/getALLCustomers', (req,res) => {
     })
     
 })
+app.get('/getALLRooms', (req,res) => {
+    console.log(1)
+    db.query(`SELECT * FROM rooms`,
+    function(err, results, fields)
+    {
+        //console.log(results)
+        if(err){res.statusCode(400)}
+        else{res.send(results)}
+    })
+    
+})
+app.get('/getALLBookings', (req,res) => {
+    console.log(1)
+    db.query(`SELECT * FROM bookings`,
+    function(err, results, fields)
+    {
+        //console.log(results)
+        if(err){res.statusCode(400)}
+        else{res.send(results)}
+    })
+    
+})
 
 app.post('/addCustomer', (req,res) =>{
     //console.log(req.body.customerID, req.body.forename, req.body.surname, req.body.email)
