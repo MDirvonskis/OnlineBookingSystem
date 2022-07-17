@@ -29,6 +29,17 @@ app.get('/getCustomer/:id', (req,res) => {
       }
     )
 })
+app.get('/getALLCustomers', (req,res) => {
+    console.log(1)
+    db.query(`SELECT * FROM customers`,
+    function(err, results, fields)
+    {
+        //console.log(results)
+        if(err){res.statusCode(400)}
+        else{res.send(results)}
+    })
+    
+})
 
 app.post('/addCustomer', (req,res) =>{
     //console.log(req.body.customerID, req.body.forename, req.body.surname, req.body.email)
@@ -63,6 +74,7 @@ app.post('/addRoom', (req,res) =>{
     }
 })
 app.post('/addBooking', (req,res) =>{
+    //console.log(req.body.bookingID,req.body.dateOfBooking,req.body.dateOfStay,req.body.dateOfDeparture,req.body.customerID, req.body.roomID)
     var sql = `INSERT INTO Bookings(BookingID, dateOfBooking, dateOfStay, dateOfDeparture, customerID, RoomID)
             VALUES (?, ?, ?, ?, ?,?)`;
     db.query(sql,[req.body.bookingID,req.body.dateOfBooking,req.body.dateOfStay,req.body.dateOfDeparture,req.body.customerID, req.body.roomID])
@@ -70,16 +82,31 @@ app.post('/addBooking', (req,res) =>{
 app.delete('/remCustomer/:id', (req,res) => {
     //console.log(1)
     const id = req.params.id
-    var sql2 = `DELETE FROM customers WHERE CustomerID =  ?`;
     var sql = `DELETE FROM passwords WHERE CustomerID = ?`;
+    var sql2 = `DELETE FROM bookings WHERE CustomerID = ?` 
+    var sql3 = `DELETE FROM customers WHERE CustomerID =  ?`;
     db.query(sql, [id])
-    db.query(sql2, [id])      
+    db.query(sql2, [id])
+    db.query(sql3, [id]) 
 })
-
+app.delete('/remRoom/:id', (req,res) => {
+    //console.log(1)
+    const id = req.params.id
+    var sql = `DELETE FROM bookings WHERE RoomID =  ?`;
+    var sql2 = `DELETE FROM rooms WHERE RoomID =  ?`;
+    db.query(sql, [id])
+    db.query(sql2, [id])
+})
+app.delete('/remBookings/:id', (req,res) => {
+    //console.log(1)
+    const id = req.params.id
+    var sql = `DELETE FROM bookings WHERE BookingID =  ?`;
+    db.query(sql, [id])
+})
 
 //const userRouter = require('./routes/users')
 //const postRouter = require('./routes/posts')
 //app.use("/users", userRouter)
 //app.user("/post", postRouter)  
 
-app.listen(port, () => {`Example app listening on port ${port}`})
+app.listen(port, () => {`App listening on port ${port}`})
