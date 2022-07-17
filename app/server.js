@@ -30,7 +30,6 @@ app.get('/getCustomer/:id', (req,res) => {
     )
 })
 app.get('/getALLCustomers', (req,res) => {
-    console.log(1)
     db.query(`SELECT * FROM customers`,
     function(err, results, fields)
     {
@@ -62,7 +61,6 @@ app.get('/getALLBookings', (req,res) => {
     })
     
 })
-
 app.post('/addCustomer', (req,res) =>{
     //console.log(req.body.customerID, req.body.forename, req.body.surname, req.body.email)
     var sql = `INSERT INTO customers(customerID,forename,surname,email)

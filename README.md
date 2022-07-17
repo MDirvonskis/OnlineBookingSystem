@@ -2,10 +2,12 @@
 
 # Start server
 ```
+cd app
 node server.js
 ```
 
 # Installation Guide:
+To install dependencies, please navigate to /app before installing.
 
 Install Express.js :https://expressjs.com/
 ```
@@ -44,7 +46,7 @@ curl -v -X GET    http://localhost:5000/getALLBookings
 ```
 
 ## POST commands
-Create customer in the database.
+Create a new customer in the database.
 ```
 curl -v -X POST    http://localhost:5000/addCustomer -H "Content-Type: application/json" -d '{"customerID": "test", "forename": "test", "surname": "test", "email": "test@gmail.com"}'
 ```
